@@ -30,7 +30,7 @@ const Meta: FC = () => {
       <meta property="og:image" content={`${basePath}/ogp.png`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="format-detection" content="telephone=no" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="apple-touch-icon" href={`${basePath}/apple-touch-icon.png`} />
       <link
         rel="icon"
         type="image/png"
@@ -43,9 +43,9 @@ const Meta: FC = () => {
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#03a9f4" />
-      <link rel="manifest" href={`/${manifestLocale}.manifest.json`} />
+      <link rel="icon" href={`${basePath}/favicon.ico`} />
+      <link rel="mask-icon" href={`${basePath}/safari-pinned-tab.svg`} color="#03a9f4" />
+      <link rel="manifest" href={`${basePath}/${manifestLocale}.manifest.json`} />
       <meta name="msapplication-TileColor" content="#84ea74" />
       <meta name="theme-color" content="#84ea74" />
       <script
