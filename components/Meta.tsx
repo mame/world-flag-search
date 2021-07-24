@@ -35,13 +35,13 @@ const Meta: FC = () => {
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon-32x32.png"
+        href={`${basePath}/favicon-32x32.png`}
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon-16x16.png"
+        href={`${basePath}/favicon-16x16.png`}
       />
       <link rel="icon" href={`${basePath}/favicon.ico`} />
       <link rel="mask-icon" href={`${basePath}/safari-pinned-tab.svg`} color="#03a9f4" />
