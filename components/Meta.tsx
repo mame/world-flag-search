@@ -44,8 +44,15 @@ const Meta: FC = () => {
         href={`${basePath}/favicon-16x16.png`}
       />
       <link rel="icon" href={`${basePath}/favicon.ico`} />
-      <link rel="mask-icon" href={`${basePath}/safari-pinned-tab.svg`} color="#03a9f4" />
-      <link rel="manifest" href={`${basePath}/${manifestLocale}.manifest.json`} />
+      <link
+        rel="mask-icon"
+        href={`${basePath}/safari-pinned-tab.svg`}
+        color="#03a9f4"
+      />
+      <link
+        rel="manifest"
+        href={`${basePath}/${manifestLocale}.manifest.json`}
+      />
       <meta name="msapplication-TileColor" content="#84ea74" />
       <meta name="theme-color" content="#84ea74" />
       <script
@@ -53,6 +60,20 @@ const Meta: FC = () => {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       ></script>
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-MEE2RHP7T4"
+      ></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MEE2RHP7T4');`,
+        }}
+      />
     </Head>
   );
 };
