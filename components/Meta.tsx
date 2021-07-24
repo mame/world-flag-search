@@ -27,7 +27,7 @@ const Meta: FC = () => {
       <meta property="og:url" content={basePath} />
       <meta property="og:description" content={t.USAGE_DESCRIPTION_1} />
       <meta property="og:site_name" content={t.TITLE} />
-      <meta property="og:image" content={`${basePath}/ogp.png`} />
+      <meta property="og:image" content={`${basePath}/ogp.png?nocache`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="format-detection" content="telephone=no" />
       <link rel="apple-touch-icon" href={`${basePath}/apple-touch-icon.png`} />
