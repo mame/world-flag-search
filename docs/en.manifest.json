@@ -4,8 +4,8 @@
   "theme_color": "#84ea74",
   "background_color": "#84ea74",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/world-flag-search/",
+  "start_url": "./en/",
   "icons": [
     {
       "src": "/world-flag-search/images/icons/icon-72x72.png",
