@@ -11,6 +11,7 @@ $ cd scripts
 $ ruby fetch-all.rb
 $ ruby gen-flags.rb
 $ ruby gen-names.rb
+$ ruby gen-clut.rb # optional
 $ ruby gen-features.rb
 $ ruby gen-db.rb
 ```

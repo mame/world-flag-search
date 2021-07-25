@@ -2,8 +2,6 @@ require "oily_png"
 require "json"
 require "./palette"
 
-Dir.mkdir("tmp") unless File.directory?("tmp")
-
 PALETTE_INV = {}
 PALETTE.each_with_index {|c, i| PALETTE_INV[c] = i }
 
@@ -34,11 +32,6 @@ class Histogram
   end
 end
 
-# make map.png
-img = ChunkyPNG::Image.new(8, 1)
-PALETTE.each_with_index {|c, i| img[i, 0] = c }
-img.save("tmp/map.png")
-
 json = []
 JSON.load(File.read("countries.json")).each do |country|
   next if country["skip"]
@@ -56,7 +49,7 @@ JSON.load(File.read("countries.json")).each do |country|
     else
       system("inkscape", "-o", norm, "-w", "300", "-h", "300", "--export-background=FFFFFF", svg)
     end
-    system("convert", "-remap", "tmp/map.png", "+dither", norm, png)
+    system("convert", norm, "remap.png", "-hald-clut", png)
   end
 
   puts "processing #{ svg }..."
