@@ -27,7 +27,7 @@ IGNORE_ISO_A3 = %w(HMD BVT SJM UMI SHN MAF BES)
 countries = []
 countries << { "a2" => "AQ", "a3" => "ATA", "name" => "Antarctica" }
 content = Wikipedia.content("Comparison of IOC, FIFA, and ISO 3166 country codes")
-content.scan(/^\|-\n(.*)/) do |s,|
+content.scan(/^\|-\s*\n(.*)/) do |s,|
   s = s.gsub(/<ref.*?<\/ref>|<ref.*?\/>/, "")
   if s =~ /^\|\{\{flagicon\|(\w+)(?:\|local)?\}\}\|\|(.*?)\|\|(\w+| *)\|\|(\w+| *)\|\|(\w+| *)\|\|/
     wikipedia_id, name, ioc, fifa, iso_a3 = $1, $2, $3, $4, $5
