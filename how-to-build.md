@@ -18,7 +18,16 @@ $ ruby gen-db.rb
 
 This process generates `/flags.json` and `public/images/flags/??.png`.
 
-## Build Next.js app
+## Debug the app
+
+```
+$ npm install
+$ npx next dev
+```
+
+and open http://localhost:3000/.
+
+## Build the app
 
 ```
 $ npm install

@@ -82,7 +82,7 @@ export default class Feature {
           for (let c = 0; c < COLOR_DIM; c++) {
             n += SQRT[this.values[jj++]][otherValues[ii++]];
           }
-          if (i != j) n *= 0.7;
+          if (i != j && (v == 0 || i == 4 || j == 4)) n *= 0.7;
           if (num < n) num = n;
         }
         score += num;
