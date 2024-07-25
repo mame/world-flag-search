@@ -16,16 +16,15 @@ def find_iso_a2(iso_a3)
 end
 
 # HMD: Australia
+# SHN: United Kingdom
+# BES: France
 # BVT: Norway
 # SJM: Norway
-# UMI: USA
-# SHN: United Kingdom
 # MAF: France
-# BES: France
+# UMI: USA
 IGNORE_ISO_A3 = %w(HMD BVT SJM UMI SHN MAF BES)
 
 countries = []
-countries << { "a2" => "AQ", "a3" => "ATA", "name" => "Antarctica" }
 content = Wikipedia.content("Comparison of IOC, FIFA, and ISO 3166 country codes")
 content.scan(/^\|-\s*\n(.*)/) do |s,|
   s = s.gsub(/<ref.*?<\/ref>|<ref.*?\/>/, "")
@@ -47,7 +46,7 @@ idx = 0
 JSON.load(File.read("countries.json")).each do |country|
   next if country["skip"]
 
-  puts "#{ idx += 1 }: #{ country["name"] }"
+  puts "#{ idx += 1 }: #{ country["name"] } (#{ country["a3"] })"
 
   Wikipedia.save_flag_svg(country["a2"], country["a3"])
 

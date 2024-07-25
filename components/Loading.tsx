@@ -5,18 +5,21 @@ import { CSSTransition } from 'react-transition-group';
 
 interface Props {
   className: string;
+  children: React.ReactNode;
 }
 
 const Loading: FC<Props> = ({ className, children }) => {
   const { state } = useContext(AppContext);
+  const nodeRef = React.useRef(null);
 
   return (
     <CSSTransition
       in={state.type == 'running'}
       timeout={100}
       classNames={className}
+      nodeRef={nodeRef}
     >
-      <div className={className}>
+      <div ref={nodeRef} className={className}>
         <div className="loading">
           {state.type != 'failed' ? (
             <ProgressBar

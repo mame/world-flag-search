@@ -1,6 +1,7 @@
 import React, { FC, useContext } from 'react';
 import AppContext from './AppContext';
 import { Button, Card, ProgressBar } from 'react-bootstrap';
+import Image from 'next/image';
 import { useLocale } from '../hooks/useLocale';
 import Loading from './Loading';
 
@@ -11,16 +12,15 @@ const FlagList: FC = () => {
   const list = [];
   if (state.type == 'running') {
     for (let i = 0; i < state.ranking.length; i++) {
-      const { iso_a2, score, name, info, img, url } = state.ranking[i].getInfo(
-        locale
-      );
+      const { iso_a2, score, name, info, img, url } =
+        state.ranking[i].getInfo(locale);
       list.push(
         <Card key={i} className="item-card" bg="light">
           <Card.Body className="item">
             <div className="flag">
               <a href={url}>
                 {img ? (
-                  <img
+                  <Image
                     src={img.src}
                     data-a2={iso_a2}
                     width={img.width}

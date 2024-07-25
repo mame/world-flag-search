@@ -65,7 +65,10 @@ type AppContextType = {
 };
 const AppContext: Context<AppContextType> = createContext({} as AppContextType);
 
-export const AppContextProvider: FC = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+export const AppContextProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(flagDBReducer, {
     type: 'loading',
     progress: 0,

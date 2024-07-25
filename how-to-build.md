@@ -8,10 +8,10 @@ Note: Use ImageMagick 7 or later. Older ImageMagick seems to break some image fi
 
 ```
 $ cd scripts
-$ ruby fetch-all.rb
+$ ruby fetch-all.rb # very slow
 $ ruby gen-flags.rb
 $ ruby gen-names.rb
-$ ruby gen-clut.rb # optional
+$ ruby gen-clut.rb # very slow
 $ ruby gen-features.rb
 $ ruby gen-db.rb
 ```
@@ -28,7 +28,6 @@ Hack: [Edit `node_modules/next/dist/export/index.js` to enable i18n with next ex
 
 ```
 $ npx next build
-$ npx next export -o docs
 $ touch docs/.nojekyll
 $ cp redirect-to-en.html docs/index.html
 ```

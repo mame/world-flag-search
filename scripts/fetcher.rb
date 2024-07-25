@@ -49,8 +49,9 @@ class WikipediaFetcher < Fetcher
     src = content(data)
     raise data unless /^\| alias = (?<entry>.*)/ =~ src
     raise data unless
-      /^\| flag alias-local = (?<flag>.*)/ =~ src ||
-      /^\| flag alias = (?<flag>.*)/ =~ src
+      /^\| flag alias-ats = (?<flag>[^|<]*)/ =~ src ||
+      /^\| flag alias-local = (?<flag>[^|<]*)/ =~ src ||
+      /^\| flag alias = (?<flag>[^|<]*)/ =~ src
     flag = flag.gsub(/<!-- .*? -->/, "")
     flag = flag.gsub(/<noinclude>/, "")
     flag.strip
@@ -79,7 +80,7 @@ class WikipediaFetcher < Fetcher
 
   def image_url(file)
     json = fetch(IMAGE_API, file)
-    p(json["query"]["pages"].first.last["imageinfo"]).first["url"]
+    json["query"]["pages"].first.last["imageinfo"].first["url"]
   end
 
   def langlinks(file)

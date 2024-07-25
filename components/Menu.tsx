@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Nav, Navbar, Modal, Button, NavDropdown } from 'react-bootstrap';
+import Image from 'next/image';
 import { useLocale } from '../hooks/useLocale';
 import PrivacyPolicy from '../components/PrivacyPolicy';
 
@@ -18,8 +19,8 @@ const Menu: FC = () => {
     <>
       <Navbar collapseOnSelect expand="lg">
         <Navbar.Brand>
-          <img
-            src={process.env.BASE_PATH+"/images/icons/icon-512x512.png"}
+          <Image
+            src={'/world-flag-search/images/icons/icon-512x512.png'}
             width="30"
             height="30"
             title="icon"

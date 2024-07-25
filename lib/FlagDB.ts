@@ -84,7 +84,7 @@ class FlagDB {
       progress((i / this.flagItems.length) * 100);
       const item = this.flagItems[i];
       item.img = await loadImage(
-        `${process.env.BASE_PATH}/images/flags/${item.iso_a2.toLowerCase()}.png`
+        `/world-flag-search/images/flags/${item.iso_a2.toLowerCase()}.png`
       );
     }
   }

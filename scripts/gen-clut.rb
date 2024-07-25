@@ -4,7 +4,7 @@ require "./palette"
 
 Dir.mkdir("tmp") unless File.directory?("tmp")
 
-system("convert", "hald:16", "-depth", "8", "-colorspace", "sRGB", "hald16-depth8.png")
+system("magick", "convert", "hald:16", "-depth", "8", "-colorspace", "sRGB", "hald16-depth8.png")
 
 PALETTE2 = PALETTE.map do |n|
   [
@@ -15,6 +15,7 @@ end
 
 img = ChunkyPNG::Image.from_file("hald16-depth8.png")
 4096.times do |y|
+  p y
   4096.times do |x|
     c = img[x, y]
     c = ColorDiff::Color::RGB.new((c >> 24) & 255, (c >> 16) & 255, (c >> 8) & 255)

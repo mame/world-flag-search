@@ -45,11 +45,11 @@ JSON.load(File.read("countries.json")).each do |country|
   unless File.readable?(png)
     norm = File.join("tmp", name + ".norm.png")
     if File.extname(svg) == ".png"
-      system("convert", "-geometry", "300x300!", svg, norm) # blackout for some flags
+      system("magick", "convert", "-geometry", "300x300!", svg, norm) # blackout for some flags
     else
       system("inkscape", "-o", norm, "-w", "300", "-h", "300", "--export-background=FFFFFF", svg)
     end
-    system("convert", norm, "remap.png", "-hald-clut", png)
+    system("magick", "convert", norm, "remap.png", "-hald-clut", png)
   end
 
   puts "processing #{ svg }..."
