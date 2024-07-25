@@ -21,7 +21,7 @@ const FlagList: FC = () => {
               <a href={url}>
                 {img ? (
                   <Image
-                    src={img.src}
+                    src={img.src + '?v=2'} // cache busting
                     data-a2={iso_a2}
                     width={img.width}
                     height={img.height}
