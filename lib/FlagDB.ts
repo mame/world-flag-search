@@ -80,13 +80,15 @@ class FlagDB {
       });
     };
 
-    for (let i = 0; i < this.flagItems.length; i++) {
-      progress((i / this.flagItems.length) * 100);
-      const item = this.flagItems[i];
-      item.img = await loadImage(
-        `/world-flag-search/images/flags/${item.iso_a2.toLowerCase()}.png`
-      );
-    }
+    let loadedCount = 0;
+    await Promise.all(
+      this.flagItems.map(async (item) => {
+        item.img = await loadImage(
+          `/world-flag-search/images/flags/${item.iso_a2.toLowerCase()}.png`
+        );
+        progress((loadedCount++ / this.flagItems.length) * 100);
+      })
+    );
   }
 
   updateRanking(
