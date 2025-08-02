@@ -39,11 +39,9 @@ class Histogram
 end
 
 json = []
-JSON.load(File.read("countries.json")).each do |country|
-  next if country["skip"]
-
-  name = country["a2"].downcase
-  png = File.join("tmp", name + ".norm.png")
+JSON.parse(File.read("countries.json"), symbolize_names: true).each do |country|
+  a2 = country[:a2].downcase
+  png = File.join("tmp", a2 + ".png")
 
   puts "processing #{ png }..."
 
@@ -77,7 +75,7 @@ JSON.load(File.read("countries.json")).each do |country|
   h_20_11_02 = h_20.merge(h_11).merge(h_02)
 
   json << {
-    name: country["a2"],
+    a2: country[:a2],
     values: [
       h_00_01_02, h_10_11_12, h_20_21_22,
       h_00_10_20, h_01_11_21, h_02_12_22,

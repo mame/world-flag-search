@@ -6,7 +6,7 @@ features = JSON.parse(File.read("features.json"), symbolize_names: true)
 json = []
 countries.each do |country|
   next if country[:skip]
-  feature = features.find {|feature| feature[:name] == country[:a2] }[:values]
+  feature = features.find {|feature| feature[:a2] == country[:a2] }[:values]
   entry = {
     a2: country[:a2],
     a3: country[:a3],

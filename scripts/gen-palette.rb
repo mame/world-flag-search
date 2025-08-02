@@ -20,7 +20,7 @@ countries = JSON.parse(File.read("countries.json"), symbolize_names: true)
 h = Hash.new(0)
 countries.each do |country|
   next if country[:skip]
-  png = File.join("tmp", country[:a2].downcase + ".norm.png")
+  png = File.join("tmp", country[:a2].downcase + ".png")
   img = ChunkyPNG::Image.from_file(png)
   img.pixels.each {|n| h[n] += 1 }
 end
