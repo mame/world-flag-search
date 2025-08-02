@@ -1,13 +1,8 @@
-PALETTE = [
-  0x000000ff, # black
-  0xffffffff, # white
-  0xbd2f25ff, # red
-  0xfab012ff, # yellow/orange
-  0x0f8528ff, # green
-  0x38a0c7ff, # cyan
-  0x003090ff, # blue
-  0xc0c0c0ff, # gray
-]
+require "json"
+
+PALETTE = JSON.load(File.read("../palette.json")).map do |s|
+  [s[1, 2].hex, s[3, 2].hex, s[5, 2].hex]
+end
 
 if $0 == __FILE__
   PALETTE.each do |c|

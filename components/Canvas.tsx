@@ -17,16 +17,7 @@ import AppContext from './AppContext';
 const WIDTH = SKETCH_WIDTH;
 const HEIGHT = SKETCH_HEIGHT + 4;
 
-const PALETTE = [
-  '#000000', // black
-  '#ffffff', // white
-  '#bd2f25', // red
-  '#fab012', // yellow/orange
-  '#0f8528', // green
-  '#38a0c7', // cyan
-  '#003090', // blue
-  '#c0c0c0', // gray
-];
+import PALETTE from '../palette.json';
 
 interface Props {
   canvasWidth: number;

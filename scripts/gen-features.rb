@@ -3,7 +3,7 @@ require "json"
 require "./palette"
 
 PALETTE_INV = {}
-PALETTE.each_with_index {|c, i| PALETTE_INV[c] = i }
+PALETTE.each_with_index {|(r, g, b), i| PALETTE_INV[(r << 24) + (g << 16) + (b << 8) + 255] = i }
 
 class Histogram
   def initialize(counts = [0] * 8)
@@ -38,18 +38,10 @@ JSON.load(File.read("countries.json")).each do |country|
 
   name = country["a2"].downcase
   svg = File.join("svg", name + ".svg")
-  unless File.readable?(svg)
-    svg = File.join("svg", name + ".png")
-  end
   png = File.join("tmp", name + ".png")
   unless File.readable?(png)
     norm = File.join("tmp", name + ".norm.png")
-    if File.extname(svg) == ".png"
-      system("magick", "convert", "-geometry", "300x300!", svg, norm) # blackout for some flags
-    else
-      system("inkscape", "-o", norm, "-w", "300", "-h", "300", "--export-background=FFFFFF", svg)
-    end
-    system("magick", "convert", norm, "remap.png", "-hald-clut", png)
+    system("magick", norm, "remap.png", "-hald-clut", png)
   end
 
   puts "processing #{ svg }..."
