@@ -1,4 +1,4 @@
-# get flag svg files and article titles from wikipedia
+# fetch flag SVG files and article titles from Wikipedia
 
 require "./fetcher"
 
@@ -39,16 +39,20 @@ content.scan(/^\|-\s*\n(.*)/) do |s,|
   end
 end
 
-File.write("countries.json", JSON.pretty_generate(countries))
+Locales = %w(en ja)
 
-idx = 0
-
-JSON.load(File.read("countries.json")).each do |country|
-  next if country["skip"]
-
-  puts "#{ idx += 1 }: #{ country["name"] } (#{ country["a3"] })"
+countries.each_with_index do |country, idx|
+  puts "#{ idx + 1 }: #{ country["name"] } (#{ country["a3"] })"
 
   Wikipedia.save_flag_svg(country["a2"], country["a3"])
 
-  Wikipedia.langlinks(country["name"])
+  name = country.delete("name")
+  langlinks = { "en" => name, **Wikipedia.langlinks(name) }
+  names = {}
+  Locales.each do |lang|
+    names[lang] = langlinks[lang] || raise("No article in #{ lang } found for #{ name }")
+  end
+  country["names"] = names
 end
+
+File.write("countries.json", JSON.pretty_generate(countries))

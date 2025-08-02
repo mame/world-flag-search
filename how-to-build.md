@@ -10,7 +10,6 @@ Note: Use ImageMagick 7 or later. Older ImageMagick seems to break some image fi
 $ cd scripts
 $ ruby fetch-all.rb # very slow
 $ ruby gen-flags.rb
-$ ruby gen-names.rb
 $ ruby gen-norm-pngs.rb
 $ ruby gen-palette.rb # very slow
 $ ruby gen-features.rb

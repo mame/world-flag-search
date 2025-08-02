@@ -49,4 +49,3 @@ yarn-error.log*
 /scripts/cache
 /scripts/svg
 /scripts/tmp
-/scripts/hald16-depth8.png
