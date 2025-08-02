@@ -12,8 +12,7 @@ $ ruby fetch-all.rb # very slow
 $ ruby gen-flags.rb
 $ ruby gen-names.rb
 $ ruby gen-norm-pngs.rb
-$ ruby gen-palette.rb
-$ ruby gen-clut.rb # very slow
+$ ruby gen-palette.rb # very slow
 $ ruby gen-features.rb
 $ ruby gen-db.rb
 ```
