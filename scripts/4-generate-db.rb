@@ -15,4 +15,5 @@ countries.each do |country|
   }
   json << entry
 end
+
 File.write("../flags.json", JSON.generate(json))

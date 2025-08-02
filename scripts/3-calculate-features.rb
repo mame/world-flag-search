@@ -1,7 +1,10 @@
 require "oily_png"
 require "json"
-require "./palette"
 require "./color-diff"
+
+PALETTE = JSON.parse(File.read("../palette.json")).map do |s|
+  [s[1, 2].hex, s[3, 2].hex, s[5, 2].hex]
+end
 
 MEMO = {}
 def get_nearest_palette_color(c)

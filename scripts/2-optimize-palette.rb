@@ -1,16 +1,18 @@
+# generate a 8-color palette by using K-means clustering
+
 require "json"
 require "oily_png"
 require "./color-diff"
 
 INITIAL_PALETTE = [
-  "000000", # black
-  "ffffff", # white
+  "000000", # black (fixed)
+  "ffffff", # white (fixed)
   "ff0000", # red
-  "ffff00", # yellow/orange
+  "ffff00", # yellow
   "00ff00", # green
   "00ffff", # cyan
   "0000ff", # blue
-  "c0c0c0", # gray
+  "c0c0c0", # gray (fixed)
 ].map { |n| [n[0, 2].hex, n[2, 2].hex, n[4, 2].hex] }
 
 PALETTE_SIZE = INITIAL_PALETTE.size

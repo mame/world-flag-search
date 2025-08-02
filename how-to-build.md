@@ -8,11 +8,11 @@ Note: Use ImageMagick 7 or later. Older ImageMagick seems to break some image fi
 
 ```
 $ cd scripts
-$ ruby fetch-all.rb # very slow
-$ ruby gen-images.rb
-$ ruby gen-palette.rb # very slow
-$ ruby gen-features.rb
-$ ruby gen-db.rb
+$ ruby 0-fetch-all.rb # very slow
+$ ruby 1-generate-images.rb
+$ ruby 2-optimize-palette.rb # very slow
+$ ruby 3-calculate-features.rb
+$ ruby 4-generate-db.rb
 ```
 
 This process generates `/flags.json`, `/palette.json`, and `public/images/flags/??.png`.
